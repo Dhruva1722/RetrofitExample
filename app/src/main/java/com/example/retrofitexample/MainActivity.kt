@@ -43,13 +43,14 @@ class MainActivity : AppCompatActivity() {
             showLoading("Please wait....")
             val body = JsonObject().apply {
                 addProperty("name","vichit coding")
-                addProperty("job","android developer")
+                addProperty("email","androiddeveloper@gmail.com")
+                addProperty("Emp_ID","123")
             }
             val result = apiService.createUser(body)
             if (result.isSuccessful){
                 Log.d("++++++++", "create user success : ${result.body()}")
             }else{
-                Log.d("++++++++", "create user message : ${result.message()}")
+                Log.d("++++++++", "create user fail : ${result.message()}")
             }
             progressDialog?.dismiss()
         }
@@ -88,7 +89,7 @@ class MainActivity : AppCompatActivity() {
     private fun getUserByID() {
         showLoading("Please wait....")
         lifecycleScope.launch {
-            val result = apiService.getUserByID("2")
+            val result = apiService.getUserByID("64fea6dfe3fdfbff8d1d6f30")
             if (result.isSuccessful){
                 Log.d("oooooo","getUserById success : ${result.body()?.data}")
             }else{
